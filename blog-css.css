@@ -1,0 +1,129 @@
+/* ============================================================
+   blog-css.css —— 实验文档给出的样式表示例
+   本文件逐行注释该示例 CSS 的含义与作用
+   ============================================================ */
+
+/* ---------- 元素选择器：选中整个 body ---------- */
+body {
+    color: #273534;              /* 全局文字颜色：深灰绿 */
+    background-color: white;     /* 全局背景色：白色 */
+    font-family: sans-serif,黑体;/* 字体：无衬线字体，中文回退到黑体 */
+    font-size: 16px;             /* 全局字号 16 像素 */
+    line-height: 1.8em;          /* 行高 = 字号的 1.8 倍，排版更疏朗 */
+}
+
+/* 元素选择器：选中所有超链接 <a> */
+a {
+    color: black;                /* 链接文字颜色：黑色 */
+    text-decoration: none;       /* 去掉链接默认下划线 */
+}
+
+/* 伪类选择器：鼠标悬停在链接上时 */
+a:hover {
+    text-decoration: underline;   /* 悬停时加回下划线 */
+    color: red;                  /* 悬停时文字变红 */
+}
+
+/* 类选择器：选中 class="hero" 的元素 */
+.hero {
+  width: 100vw;                  /* 宽度 = 视口宽度的 100% */
+  height: 100vh;                 /* 高度 = 视口高度的 100%（整屏大屏区） */
+}
+
+/* 后代选择器：选中所有 <ul> 里面的 <li> */
+ul li{
+    list-style: none;            /* 去掉列表项默认的圆点/序号 */
+}
+
+/* 类选择器：站点品牌名 */
+.brand {
+    font-size: 25rem;            /* 字号 25 rem（注意：这是示例值，实际偏大，仅作演示） */
+    font-weight: bold;           /* 加粗 */
+}
+
+/* 类选择器：页头 */
+.site-header {
+    padding: 20px;               /* 内边距四周均为 20px */
+    border-bottom: 1px solid #dfe5df;  /* 底部 1px 浅灰实线分隔线 */
+}
+
+/* 类选择器：小标题/眉批文字 */
+.eyebrow {
+    color: #236b58;              /* 绿色文字 */
+    width: 50%;                  /* 宽度占父容器一半 */
+    letter-spacing: 2px;         /* 字母间距 2px，显得精致 */
+}
+
+/* 类选择器：弱化/隐藏文字 */
+.muted{
+    /* display:none; */           /* （被注释掉）彻底隐藏元素并脱离文档流 */
+    visibility: hidden;          /* 隐藏元素但仍占位（看不见，位置还在） */
+}
+
+/* 元素+类选择器：div 中 class="featured-badge" 的元素 */
+div.featured-badge {
+    position:relative;           /* 相对定位：作为内部绝对定位元素的参照父级 */
+}
+
+/* 后代选择器：在 featured-badge 内部、class="author-badge" 的 <p> */
+div.featured-badge p.author-badge {
+    position:absolute;           /* 绝对定位：脱离文档流，相对最近的定位父级偏移 */
+    left:30px;                   /* 距父级左侧 30px */
+    top:100px;                   /* 距父级顶部 100px */
+}
+
+/* 群组选择器：同时选中 class="hint" 和 class="count" */
+.hint,.count {
+    opacity: 0;                  /* 完全透明（看不见，但仍占位、可交互） */
+}
+
+/* 群组选择器：面板与文章卡片统一样式 */
+.panel,.article-card {
+    border: 1px solid #dfe5df;   /* 1px 浅灰边框 */
+    border-radius: 10px;         /* 圆角 10px */
+    padding: 10px 8px 24px;      /* 内边距：上10 左右8 下24 */
+    margin-bottom: 20px;         /* 卡片之间向下留 20px 间距 */
+}
+
+/* 后代选择器：div.ted 里面的直接/间接 <h3> */
+div.ted>h3 {
+    font-weight: bold;           /* 标题加粗 */
+    padding: 0 6px;              /* 左右各留 6px 内边距 */
+}
+
+/* 表单控件统一继承父元素字号 */
+button,input,select,textarea {
+    font: inherit;               /* 不使用浏览器默认字号，继承 body 的 16px */
+}
+
+/* 属性选择器：只选中文本框和邮箱框 */
+input[type="text"],input[type="email"]
+{
+    border: 1px dashed #bfcac4;  /* 浅灰虚线边框 */
+}
+
+/* 按钮样式 */
+button {
+    padding: 7px 16px;           /* 上下 7px、左右 16px */
+    cursor: pointer;             /* 鼠标移上去变成小手形状 */
+}
+
+/* :focus-visible：键盘聚焦控件时显示高亮轮廓 */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #bd8839;  /* 3px 琥珀色外轮廓线 */
+    outline-offset: 3px;         /* 轮廓线向外偏移 3px，不紧贴边框 */
+}
+
+/* 表格：合并双线边框为单线 */
+table {
+    border-collapse: collapse;
+}
+
+/* 表头单元格与普通单元格 */
+th,td {
+    padding: 8px;                /* 单元格内边距 8px */
+    text-align: left;            /* 文字左对齐 */
+}

@@ -1,0 +1,308 @@
+/* ============================================================
+   仁伟的博客 · style.css
+   实验一：HTML + CSS 综合练习
+   ============================================================ */
+
+/* ---------- 全局重置 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;          /* 盒模型：width 含 padding 和 border，便于计算 */
+}
+
+body {
+  color: #273534;
+  background-color: #f7f7f8;
+  font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+a {
+  color: #273534;
+  text-decoration: none;           /* 去掉链接默认下划线 */
+}
+a:hover {
+  color: #bd8839;
+}
+
+/* ============================================================
+   页头：横向导航条（flex）
+   ============================================================ */
+.site-header {
+  background: #ffffff;
+  border-bottom: 1px solid #dfe5df;
+  position: sticky;                /* 吸顶导航 */
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;                   /* 弹性盒：品牌名与导航横向排列 */
+  align-items: center;
+  justify-content: space-between;  /* 左右两端对齐 */
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.brand-dot { color: #236b58; }
+
+.site-nav ul {
+  display: flex;                   /* 导航项横向排列 */
+  gap: 24px;
+  list-style: none;                /* 去掉列表默认圆点 */
+}
+.site-nav a {
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: all .2s ease;        /* CSS3 过渡动画 */
+}
+.site-nav a:hover,
+.site-nav a.active {
+  color: #236b58;
+  border-bottom-color: #236b58;
+}
+
+/* ============================================================
+   Hero 标语区
+   ============================================================ */
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 24px 48px;
+}
+.eyebrow {
+  color: #236b58;
+  letter-spacing: 4px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.hero h1 {
+  font-size: 38px;
+  line-height: 1.4;
+  margin: 12px 0;
+}
+.muted-sub { color: #6b7a76; }
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: #236b58;
+  color: #fff;
+  border-radius: 8px;
+  transition: transform .2s ease, background .2s ease;
+}
+.btn:hover {
+  background: #1b5244;
+  color: #fff;
+  transform: translateY(-2px);     /* hover 时轻微上浮 */
+}
+
+/* ============================================================
+   主体：左右分栏（flex）
+   ============================================================ */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.layout {
+  display: flex;                   /* 左主栏 + 右侧边栏 */
+  gap: 32px;
+  align-items: flex-start;
+}
+.content { flex: 1 1 auto; min-width: 0; }   /* 主栏自适应占剩余空间 */
+.sidebar { flex: 0 0 280px; }                 /* 侧边栏固定宽度 */
+
+.section-title {
+  font-size: 22px;
+  margin: 32px 0 16px;
+  padding-left: 10px;
+  border-left: 4px solid #236b58;
+}
+
+/* ---------- 文章卡片 ---------- */
+.article-card {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid #dfe5df;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.article-card:hover {
+  box-shadow: 0 8px 24px rgba(39, 53, 52, .10);   /* CSS3 阴影动画 */
+  transform: translateY(-3px);
+}
+
+/* 封面图：用 CSS 渐变代替外部图片，离线也能看 */
+.cover {
+  flex: 0 0 140px;
+  height: 100px;
+  border-radius: 8px;
+}
+.cover-1 { background: linear-gradient(135deg, #236b58, #7fc8b0); }
+.cover-2 { background: linear-gradient(135deg, #bd8839, #e8c98a); }
+.cover-3 { background: linear-gradient(135deg, #4a5b7c, #9fb0d0); }
+
+.card-meta {
+  font-size: 13px;
+  color: #6b7a76;
+}
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  background: #e8f1ee;
+  color: #236b58;
+  border-radius: 999px;
+}
+.card-body h3 { margin: 6px 0; font-size: 18px; }
+.card-body h3 a:hover { color: #236b58; }
+.excerpt {
+  font-size: 14px;
+  color: #556560;
+}
+.readmore {
+  font-size: 14px;
+  color: #236b58;
+}
+code {
+  background: #eef1ef;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* ---------- 归档表格 ---------- */
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;       /* 合并边框 */
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.archive-table th,
+.archive-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5ebe6;
+  text-align: left;
+}
+.archive-table th {
+  background: #236b58;
+  color: #fff;
+  font-weight: normal;
+}
+
+/* ============================================================
+   侧边栏面板
+   ============================================================ */
+.panel {
+  background: #fff;
+  border: 1px solid #dfe5df;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+.panel h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.panel p { font-size: 14px; color: #556560; }
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;              /* 圆形头像 */
+  background: linear-gradient(135deg, #236b58, #7fc8b0);
+  color: #fff;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.social,
+.tag-cloud {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.tag-cloud a {
+  display: inline-block;
+  padding: 2px 10px;
+  background: #eef1ef;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.tag-cloud a:hover { background: #236b58; color: #fff; }
+
+/* ---------- 订阅表单 ---------- */
+.sub-form label {
+  display: block;
+  font-size: 13px;
+  margin-top: 8px;
+  color: #556560;
+}
+.sub-form input[type="text"],
+.sub-form input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px dashed #bfcac4;
+  border-radius: 6px;
+  font: inherit;
+  margin-top: 2px;
+}
+.sub-form input:focus-visible {
+  outline: 3px solid #bd8839;      /* 聚焦时的高亮框 */
+  outline-offset: 2px;
+}
+.sub-form button {
+  margin-top: 12px;
+  padding: 8px 18px;
+  background: #236b58;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.sub-form button:hover { background: #1b5244; }
+.hint-text { font-size: 13px; }
+
+/* ============================================================
+   页脚
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid #dfe5df;
+  text-align: center;
+  padding: 24px;
+  color: #8a9793;
+  font-size: 13px;
+  background: #fff;
+}
+
+/* ============================================================
+   选做：媒体查询 —— 窄屏自适应
+   ============================================================ */
+@media (max-width: 800px) {
+  .layout { flex-direction: column; }   /* 侧边栏掉到主栏下方 */
+  .sidebar { flex: 1 1 auto; width: 100%; }
+  .hero h1 { font-size: 28px; }
+  .article-card { flex-direction: column; }
+  .cover { flex: none; width: 100%; height: 140px; }
+}
